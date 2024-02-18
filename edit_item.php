@@ -4,38 +4,32 @@ include_once("config.php");
 
 // Check if the ID parameter is provided in the URL
 if (isset($_GET['id'])) {
-    $id_customer = $_GET['id'];
+    $id_item = $_GET['id'];
 
-    // Fetch record from tbl_customer_mohammad_rifki_ramadhan_arsjad table based on ID
-    $result = mysqli_query($mysqli, "SELECT * FROM tbl_customer_mohammad_rifki_ramadhan_arsjad WHERE id_customer='$id_customer'");
+    // Fetch record from tbl_item_mohammad_rifki_ramadhan_arsjad table based on ID
+    $result = mysqli_query($mysqli, "SELECT * FROM tbl_item_mohammad_rifki_ramadhan_arsjad WHERE id_item='$id_item'");
 
     // Check if the record exists
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
 
         // Retrieve existing data
-        $nama_customer = $row['nama_customer'];
-        $alamat = $row['alamat'];
-        $telp = $row['telp'];
-        $fax = $row['fax'];
-        $email = $row['email'];
+        $nama_item = $row['nama_item'];
+        $harga_beli = $row['harga_beli'];
+        $harga_jual = $row['harga_jual'];
 
         // Handle form submission
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nama_customer_new = $_POST['nama_customer'];
-            $alamat_new = $_POST['alamat'];
-            $telp_new = $_POST['telp'];
-            $fax_new = $_POST['fax'];
-            $email_new = $_POST['email'];
+            $nama_item_new = $_POST['nama_item'];
+            $harga_beli_new = $_POST['harga_beli'];
+            $harga_jual_new = $_POST['harga_jual'];
 
-            // Update the record in tbl_customer_mohammad_rifki_ramadhan_arsjad table
-            $query = "UPDATE tbl_customer_mohammad_rifki_ramadhan_arsjad 
-            SET nama_customer='$nama_customer_new', 
-                alamat='$alamat_new', 
-                telp='$telp_new', 
-                fax='$fax_new', 
-                email='$email_new' 
-            WHERE id_customer='$id_customer'";
+            // Update the record in tbl_item_mohammad_rifki_ramadhan_arsjad table
+            $query = "UPDATE tbl_item_mohammad_rifki_ramadhan_arsjad 
+            SET nama_item='$nama_item_new', 
+                harga_beli='$harga_beli_new', 
+                harga_jual='$harga_jual_new'
+            WHERE id_item='$id_item'";
 
             $updateResult = mysqli_query($mysqli, $query);
             // var_dump($updateResult);
@@ -63,7 +57,7 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Edit Form Customer</title>
+    <title>Edit Form item</title>
     <!--favicon-->
     <!-- <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
     <!-- simplebar CSS-->
@@ -170,7 +164,7 @@ if (isset($_GET['id'])) {
                 <div class="row pt-2 pb-2">
                     <div class="col-sm-9">
                         <div class="icon-container">
-                            <a href="home.php">
+                            <a href="home_item.php">
                                 <span class="ti-arrow-left"></span><span class="icon-name">Back to Home</span>
 
                                 <!-- <h4 class="page-title">Back to Home</h4> -->
@@ -184,41 +178,28 @@ if (isset($_GET['id'])) {
                 <!-- End Breadcrumb-->
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">Form Edit Customer</div>
+                        <div class="card-title">Form Edit item</div>
                         <hr>
                         <form action="" method="post">
 
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Name Customer</label>
+                                <label class="col-sm-2 col-form-label">Name item</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $nama_customer; ?>" name="nama_customer" placeholder="Enter Your Name">
+                                    <input type="text" class="form-control" value="<?php echo $nama_item; ?>" name="nama_item" placeholder="Enter Your Name">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Alamat</label>
+                                <label class="col-sm-2 col-form-label">harga beli</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input-24" value="<?php echo $alamat; ?>" name="alamat" placeholder="Enter Password">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">No Telepon</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $telp; ?>" name="telp" placeholder="Enter Your Mobile Number">
+                                    <input type="text" class="form-control" value="<?php echo $harga_beli; ?>" name="harga_beli" placeholder="Enter Your Mobile Number">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Fax</label>
+                                <label class="col-sm-2 col-form-label">harga jual</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $fax; ?>" name="fax" placeholder="Enter Your Mobile Number">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $email; ?>" name="email" placeholder="Enter Your Mobile Number">
+                                    <input type="text" class="form-control" value="<?php echo $harga_jual; ?>" name="harga_jual" placeholder="Enter Your Mobile Number">
                                 </div>
                             </div>
 

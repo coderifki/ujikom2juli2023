@@ -129,41 +129,32 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Create Form Customer</div>
+                            <div class="card-title">Create Form Sales</div>
                             <hr>
                             <form>
-
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Name Customer</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="nama_customer" name="nama_customer" placeholder="Enter Your Name">
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Alamat</label>
+                                    <label class="col-sm-2 col-form-label">Tanggal</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Enter Your Address">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">No. Telepon</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="telp" name="telp" placeholder="Enter Your Mobile Number">
+                                        <input type="text" class="form-control" id="tgl_sales" name="tgl_sales" placeholder="Enter Your Mobile Number">
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Fax</label>
+                                    <label class="col-sm-2 col-form-label">Do Customer</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="fax" name="fax" placeholder="Enter Your Fax Number">
+                                        <input type="text" class="form-control" id="do_customer" name="do_customer" placeholder="Enter Your Do Customer">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Email</label>
+                                    <label class="col-sm-2 col-form-label">Status</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Your Email">
+                                        <input type="text" class="form-control" id="status" name="status" placeholder="Enter Your Status">
                                     </div>
                                 </div>
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Home</title>
+    <title>Sales Homepage</title>
     <!--favicon-->
     <!-- <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
     <!-- simplebar CSS-->
@@ -99,7 +99,7 @@
                 <!-- Breadcrumb-->
                 <div class="row pt-2 pb-2">
                     <div class="col-sm-9">
-                        <h4 class="page-title">Homepage Customer</h4>
+                        <h4 class="page-title">Homepage Sales</h4>
 
 
                     </div>
@@ -112,7 +112,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Data Table</h5>
-                            <a href="create.php">
+                            <a href="create_sales.php">
                                 <button type="button" class="btn btn-outline-primary waves-effect waves-light m-2">Insert Data</button>
                             </a>
 
@@ -120,12 +120,11 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Customer</th>
-                                            <th scope="col">Alamat</th>
-                                            <th scope="col">Telp</th>
-                                            <th scope="col">Fax</th>
-                                            <th scope="col">Email</th>
+                                            <th scope="col">id_sales</th>
+                                            <th scope="col">id_customer</th>
+                                            <th scope="col">tgl_sales</th>
+                                            <th scope="col">do_customer</th>
+                                            <th scope="col">status</th>
                                             <th scope="col">Update</th>
                                         </tr>
                                     </thead>
@@ -135,20 +134,19 @@
                                         include_once("config.php");
 
                                         // Fetch all records from tbl_customer table with jenis_customer from tbl_kategori
-                                        $query = "SELECT id_customer, nama_customer, alamat, telp, fax, email FROM tbl_customer_mohammad_rifki_ramadhan_arsjad";
+                                        $query = "SELECT id_sales, id_customer, tgl_sales, do_customer, status FROM tbl_sales_mohammad_rifki_ramadhan_arsjad";
                                         $result = mysqli_query($mysqli, $query);
                                         ?>
                                         <?php
                                         // Loop through the result set
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
+                                            echo "<td>" . $row['id_sales'] . "</td>";
                                             echo "<td>" . $row['id_customer'] . "</td>";
-                                            echo "<td>" . $row['nama_customer'] . "</td>";
-                                            echo "<td>" . $row['alamat'] . "</td>";
-                                            echo "<td>" . $row['telp'] . "</td>";
-                                            echo "<td>" . $row['fax'] . "</td>";
-                                            echo "<td>" . $row['email'] . "</td>";
-                                            echo "<td><a href='edit.php?id=" . $row['id_customer'] . "'>Edit</a> | <a href='delete.php?id=" . $row['id_customer'] . "'>Hapus</a></td>";
+                                            echo "<td>" . $row['tgl_sales'] . "</td>";
+                                            echo "<td>" . $row['do_customer'] . "</td>";
+                                            echo "<td>" . $row['status'] . "</td>";
+                                            echo "<td><a href='edit.php?id=" . $row['id_customer'] . "'>Edit</a> | <a href='delete.php?id=" . $row['id_sales'] . "'>Hapus</a></td>";
                                             echo "</tr>";
                                         }
                                         ?>

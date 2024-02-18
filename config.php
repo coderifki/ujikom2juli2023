@@ -4,7 +4,7 @@
  * using mysqli_connect for database connection
  */
 $databaseHost = 'localhost';
-$databaseName = 'ujikom2juli';
+$databaseName = 'ujikom35_010823_mohammad_rifki_ramadhan_arsjad';
 $databaseUsername = 'root';
 $databasePassword = '';
 $password = "";

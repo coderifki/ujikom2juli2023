@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Create Form Customer</title>
+    <title>Create Form item</title>
     <!--favicon-->
     <!-- <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
     <!-- simplebar CSS-->
@@ -107,14 +107,14 @@
         <!--End topbar header-->
 
         <div class="clearfix"></div>
-        <form action="create.php" method="post">
+        <form action="create_item.php" method="post">
             <div class="content-wrapper">
                 <div class="container-fluid">
                     <!-- Breadcrumb-->
                     <div class="row pt-2 pb-2">
                         <div class="col-sm-9">
                             <div class="icon-container">
-                                <a href="home.php">
+                                <a href="home_item.php">
                                     <span class="ti-arrow-left"></span><span class="icon-name">Back to Home</span>
 
                                     <!-- <h4 class="page-title">Back to Home</h4> -->
@@ -129,43 +129,30 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Create Form Customer</div>
+                            <div class="card-title">Create Form item</div>
                             <hr>
                             <form>
-
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Name Customer</label>
+                                    <label class="col-sm-2 col-form-label">Name item</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nama_customer" name="nama_customer" placeholder="Enter Your Name">
+                                        <input type="text" class="form-control" id="nama_item" name="nama_item" placeholder="Enter Your Name Item">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Alamat</label>
+                                    <label class="col-sm-2 col-form-label">Harga Beli</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Enter Your Address">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">No. Telepon</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="telp" name="telp" placeholder="Enter Your Mobile Number">
+                                        <input type="text" class="form-control" id="harga_beli" name="harga_beli" placeholder="Enter Your Harga Beli">
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Fax</label>
+                                    <label class="col-sm-2 col-form-label">Harga Jual</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="fax" name="fax" placeholder="Enter Your Fax Number">
+                                        <input type="text" class="form-control" id="harga_jual" name="harga_jual" placeholder="Enter Your Harga Jual">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Your Email">
-                                    </div>
-                                </div>
+
 
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
@@ -185,23 +172,21 @@
         // Check if form submitted
         if (isset($_POST['Submit'])) {
 
-            $nama_customer = $_POST['nama_customer'];
-            $alamat = $_POST['alamat'];
-            $telp = $_POST['telp'];
-            $fax = $_POST['fax'];
-            $email = $_POST['email'];
+            $nama_item = $_POST['nama_item'];
+            $harga_beli = $_POST['harga_beli'];
+            $harga_jual = $_POST['harga_jual'];
 
             // Include database connection file
             include_once("config.php");
 
             // Insert data into tbl_customer_mohammad_rifki_ramadhan_arsjad table
-            $query = "INSERT INTO tbl_customer_mohammad_rifki_ramadhan_arsjad (nama_customer, alamat, telp, fax, email) 
-              VALUES ('$nama_customer', '$alamat', '$telp', '$fax', '$email')";
+            $query = "INSERT INTO tbl_item_mohammad_rifki_ramadhan_arsjad (nama_item, harga_beli, harga_jual) 
+              VALUES ('$nama_item', '$harga_beli', '$harga_jual')";
             $result = mysqli_query($mysqli, $query);
 
             // Show message when data added
             if ($result == true) {
-                echo "Data added successfully. <a href='home.php'>View Data</a>";
+                echo "Data added successfully. <a href='home_item.php'>View Data</a>";
             } else {
                 echo "Data can't be added successfully. Error: " . mysqli_error($mysqli);
             }

@@ -4,10 +4,10 @@ include_once("config.php");
 
 // Check if the ID parameter is provided in the URL
 if (isset($_GET['id'])) {
-    $id_customer = $_GET['id'];
+    $id_sales = $_GET['id'];
 
     // Delete record from tbl_customer_mohammad_rifki_ramadhan_arsjad table
-    $result = mysqli_query($mysqli, "DELETE FROM tbl_customer_mohammad_rifki_ramadhan_arsjad WHERE id_customer='$id_customer'");
+    $result = mysqli_query($mysqli, "DELETE FROM tbl_customer_mohammad_rifki_ramadhan_arsjad WHERE id_sales='$id_sales'");
 
     // Check if the deletion was successful
     if ($result) {

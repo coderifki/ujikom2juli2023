@@ -2,10 +2,13 @@
 // Include database connection file
 include_once("config.php");
 
+
+
+
 // Check if form submitted
-if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if (isset($_GET['submit'])) {
+    $username = $_GET['username'];
+    $password = $_GET['password'];
 
     // Perform query to check if the username and password match
     $query = "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password'";
@@ -98,7 +101,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
 
-                                <input name="submit" value="Login" type="submit" class="btn btn-primary btn-block waves-effect waves-light">
+                                <input name="submit" value="login" type="submit" class="btn btn-primary btn-block waves-effect waves-light">
 
                             </form>
                         </div>

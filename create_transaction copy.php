@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Create Form Customer</title>
+    <title>Form Transaction</title>
     <!--favicon-->
     <!-- <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
     <!-- simplebar CSS-->
@@ -107,14 +107,14 @@
         <!--End topbar header-->
 
         <div class="clearfix"></div>
-        <form action="create.php" method="post">
+        <form action="create_transaction.php" method="post">
             <div class="content-wrapper">
                 <div class="container-fluid">
                     <!-- Breadcrumb-->
                     <div class="row pt-2 pb-2">
                         <div class="col-sm-9">
                             <div class="icon-container">
-                                <a href="home.php">
+                                <a href="create_transaction.php">
                                     <span class="ti-arrow-left"></span><span class="icon-name">Back to Home</span>
 
                                     <!-- <h4 class="page-title">Back to Home</h4> -->
@@ -129,35 +129,84 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Create Form Customer</div>
+                            <div class="card-title">Form Transaction</div>
                             <hr>
                             <form>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Name Customer</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nama_customer" name="nama_customer" placeholder="Enter Your Name">
+                                    <label for="input-21" class="col-sm-2 col-form-label">Id Item</label>
+                                    <div class="col-sm-10 ">
+
+                                        <select class="form-control single-select" id="id_item" name="id_item">
+                                            <?php
+                                            // Include database connection file
+                                            include_once("config.php");
+
+                                            // Fetch categories from tbl_item table
+                                            $query = "SELECT * FROM tbl_item_mohammad_rifki_ramadhan_arsjad";
+                                            $item_result = mysqli_query($mysqli, $query);
+
+                                            // Loop through the result set
+                                            while ($row = mysqli_fetch_assoc($item_result)) {
+                                                echo "<option value='" . $row['id_item'] . "'>" . $row['id_item'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Alamat</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Enter Your Address">
+                                    <label for="input-21" class="col-sm-2 col-form-label">Nama Item</label>
+                                    <div class="col-sm-10 ">
+
+                                        <select class="form-control single-select" id="id_item" name="id_item">
+                                            <?php
+                                            // Include database connection file
+                                            include_once("config.php");
+
+                                            // Fetch categories from tbl_item table
+                                            $query = "SELECT * FROM tbl_item_mohammad_rifki_ramadhan_arsjad";
+                                            $item_result = mysqli_query($mysqli, $query);
+
+                                            // Loop through the result set
+                                            while ($row = mysqli_fetch_assoc($item_result)) {
+                                                echo "<option value='" . $row['id_item'] . "'>" . $row['nama_item'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">No. Telepon</label>
+                                    <label class="col-sm-2 col-form-label">quantity</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="telp" name="telp" placeholder="Enter Your Mobile Number">
+                                        <input type="number" name="ammount" value="<?php echo $isi['ammount']; ?>" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Price</label>
+                                    <div class="col-sm-2 form-control" type="text" id="price" name="price">
+                                        <?php
+                                        // Include database connection file
+                                        include_once("config.php");
+
+                                        // Fetch categories from tbl_item table
+                                        $query = "SELECT * FROM tbl_item_mohammad_rifki_ramadhan_arsjad";
+                                        $item_result = mysqli_query($mysqli, $query);
+
+                                        // Loop through the result set
+                                        while ($row = mysqli_fetch_assoc($item_result)) {
+                                            echo "<option value='" . $row['id_item'] . "'>" . $row['harga_jual'] . "</option>";
+                                        }
+                                        ?>
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Fax</label>
+                                    <label class="col-sm-2 col-form-label">Total Bayar</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="fax" name="fax" placeholder="Enter Your Fax Number">
+                                        <input type="text" class="form-control" name="total" value="<?php echo $ammount; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -181,6 +230,7 @@
 
                 </div><!--End wrapper-->
         </form>
+
         <?php
         // Check if form submitted
         if (isset($_POST['Submit'])) {
@@ -201,7 +251,7 @@
 
             // Show message when data added
             if ($result == true) {
-                echo "Data added successfully. <a href='home.php'>View Data</a>";
+                echo "Data added successfully. <a href='create_transaction.php'>View Data</a>";
             } else {
                 echo "Data can't be added successfully. Error: " . mysqli_error($mysqli);
             }
